@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <h1 id = 'result'></h1>
+   <button id ='btn-1'>Celsius to Fahrenheit</button>
+   <button id ='btn-2'>Fahrenheit to Celsius</button>
+
+   <script>
+
+      var result_h1 = document.getElementById('result');
+      var btn1 = document.getElementById('btn-1');
+      var btn2 = document.getElementById('btn-2');
+
+      var c2f = (degrees_c) => degrees_c * 9 / 5 + 32;
+      var f2c = (degrees_f) => (degrees_f - 32) * 5 / 9;
+      var c, f, s;
+
+      var handler1 = () => {
+         c = Number(prompt('Celsium degrees:'));
+         f = c2f(c);
+         s = `${c} Celsius-> ${f} Fahrenheit`;
+         result_h1.innerHTML = s;
+      }
+      var handler2 = () => {
+         f = Number(prompt('Fahrenheit degrees:'));
+         c = f2c(f);
+         s = `${f} Fahrenheit-> ${c} Celsius`;
+         result_h1.innerHTML = s;
+      }
+      
+      btn1.onclick = handler1;
+      btn2.onclick = handler2;
+
+   </script>
+</body>
+</html>
