@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>LOOPS</title>
+</head>
+<body>
+   <p>
+      n =
+      <input type="number" id ='number' value="0" min ='0' max ='100' step="1">
+   </p>
+   
+   <div id = 'target'></div>
+   <script>
+      let target = document.getElementById('target');
+      let input_number = document.getElementById('number');
+      let fillTarget = (n) => {
+         let counter = 1;
+         target.innerHTML = '';
+         let arr = Array.from(Array(n).keys());
+
+         console.log(arr, n);
+         arr.forEach((el) => {
+            let p = document.createElement('p');
+            p.innerHTML = String(el + 1);
+            target.appendChild(p);
+         });
+      }
+      input_number.addEventListener('change', (event) => {
+         // alert(event.target.value);
+         fillTarget(Number(event.target.value));
+      });
+      // fillTarget(7);
+
+      
+
+   </script>
+</body>
+</html>

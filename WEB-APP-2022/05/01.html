@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <div id = 'container'></div>
+   <script>
+      // let student = {
+      //    firstName: 'Vasya',
+      //    lastName: 'Pupkin',
+      //    age: 19,
+      //    meanmark: 4.2,
+      //    'is marryed': true,
+      // };
+
+      // student.age++;
+      // console.log(student);
+      // console.log(student.firstName, student.lastName);
+      // console.log(student['firstName'], student['lastName']);
+      // console.log(student['is marryed']);
+      let movie_list = [
+            {
+                "id": 11,
+                "title": "Café Society",
+                "year": 2016,
+                "director": "Woody Allen",
+                "poster": "http://127.0.0.1:8001/media/posters/Cafe_Society.jpg",
+                "rating": 7.0
+            },
+            {
+                "id": 10,
+                "title": "The Wolf of Wall Street",
+                "year": 2013,
+                "director": "Martin Scorsese",
+                "poster": "http://127.0.0.1:8001/media/posters/The_Wolf_of_Wall_Street_2013.png",
+                "rating": 6.9
+            },
+            {
+                "id": 5,
+                "title": "Midnight in Paris",
+                "year": 2011,
+                "director": "Woody Allen",
+                "poster": "http://127.0.0.1:8001/media/posters/Midnight_in_Paris_Poster.jpg",
+                "rating": 6.8
+            },
+            {
+                "id": 13,
+                "title": "Sherlock Holmes: A Game of Shadows",
+                "year": 2011,
+                "director": "Guy Ritchie",
+                "poster": "http://127.0.0.1:8001/media/posters/sherlock-holmes-a-game-of-shadows-singaporean-movie-poster.jpg",
+                "rating": 6.0
+            },
+        ]
+      
+        let container = document.getElementById('container');
+
+        for(let movie of movie_list){
+         // console.log(movie.title);
+         let div = document.createElement('div');
+         let header = document.createElement('h4');
+         header.innerHTML = movie.title;
+         div.appendChild(header);
+         let txt = document.createElement('p');
+         txt.innerHTML = `year: ${movie.year}, rating: ${movie.rating}<br> by ${movie.director}`;
+         div.appendChild(txt);
+         container.append(div);
+        }
+   </script>
+</body>
+</html>

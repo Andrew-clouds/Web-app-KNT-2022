@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>LOOPS</title>
+</head>
+<body>
+   <div id = 'target'></div>
+   <script>
+      let target = document.getElementById('target');
+      let colors = ['red', 'green', 'brown', 'blue'];
+      let fillTarget = (values) => {
+         target.innerHTML = '';
+         // for (const val of values) {
+         // console.log(val);
+         //    let p = document.createElement('p');
+         //    p.innerHTML = String(val);
+         //    p.style.color = val;
+         //    target.appendChild(p);
+         // }
+         values.forEach((val, idx) => {
+            let p = document.createElement('p');
+            p.innerHTML = String(val);
+            p.style.color = val;
+            target.appendChild(p);
+         });
+      }
+
+      fillTarget(colors);
+
+      
+
+   </script>
+</body>
+</html>
