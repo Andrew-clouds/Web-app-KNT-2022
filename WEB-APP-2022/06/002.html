@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <script>
+      class Square {
+         constructor(a) {
+            this.a = a;
+         }
+         
+         get area() {
+            return this.a * this.a;
+         }
+         set area(new_area) {
+            this.a = Math.sqrt(new_area);
+         }
+      }
+      
+   s1 = new Square(2.5);
+   console.log(s1, s1.area);
+   s1.area = 0.25;
+   console.log(s1, s1.area);
+   </script>
+</body>
+</html>

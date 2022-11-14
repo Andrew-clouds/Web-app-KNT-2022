@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+   <style>
+      .question-card{
+         width: 200px;
+         padding: 20px;
+         border: 1px solid green;
+         border-radius: 5px;
+         box-shadow: 5px 5px 5px lightgreen;
+         margin: 10px;
+      }
+      .question-card > button {
+         padding: 10px;
+         margin-top: 10px;
+         margin-left: 40px;
+      }
+   </style>
+</head>
+
+<body>
+
+   <div id="app">
+      <div v-for="(q, iq) in questions" class="question-card"
+      v-if="iq === indexCurrent">
+         <h4>{{ q.text }}</h4>
+         <div v-for="(v, iv) in q.variants">
+            <input type="radio" 
+            v-bind:name="iq"
+            v-bind:id="get_variant_id(iq,iv)"
+            v-bind:value="iv"
+            v-model="answers[iq]">
+            <label v-bind:for="get_variant_id(iq,iv)">{{v}}</label>
+         </div>
+         <button v-on:click="click_button">Next Question</button>
+      </div>
+
+      <div v-if="indexCurrent === questions.length" class="question-card">
+         <h4>Результаты викторины:</h4>
+         <p>правильных ответов {{corrent_answers_number()}} 
+            из {{questions.length}} </p>
+      </div>
+   </div>
+
+   <script>
+      const questions = [
+         {
+            text: 'сколько будет два в квадрате?',
+            variants: ['1', '2', '4', '8'],
+            correct: 2,
+         },
+         {
+            text: 'зимой холодно?',
+            variants: ['да', 'нет'],
+            correct: 0,
+         },
+         {
+            text: 'кошки летают?',
+            variants: ['да', 'нет'],
+            correct: 1,
+         },
+         {
+            text: 'остаток от деления 10 на 3',
+            variants: ['0', '1', '2', '8'],
+            correct: 1,
+         },
+         {
+            text: '3-го мушкетера звали',
+            variants: ['Азиз', 'Наргис', 'Арамис'],
+            correct: 2,
+         },
+      ];
+      var vm = new Vue({
+         el: '#app',
+         data: {
+            questions: questions,
+            indexCurrent: 0,
+            answers: Array(questions.length).fill(null),
+         },
+         methods: {
+            get_variant_id: function(i1, i2) {
+               return `q${i1}_v${i2}`;
+            },
+            click_button: function() {
+               console.log(this.answers);
+               this.indexCurrent++;
+            },
+            corrent_answers_number: function() {
+               let result = 0;
+               for (var i = 0; i<this.questions.length; i++) {
+                  if(this.questions[i].correct === this.answers[i]) {
+                     result++;
+                  }
+               }
+               return result;
+            },
+         },
+      });
+   </script>
+</body>
+
+</html>

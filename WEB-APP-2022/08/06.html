@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+   <style>
+      div#app-6 > div {
+         border: 1px solid grey;
+         border-radius: 5px;
+         box-shadow: 5px 5px 10px lightblue;
+         width: 150px;
+         margin: 10px;
+         padding: 10px;
+         text-align: center;
+         display: inline-block;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="app-6">
+      <movie-component v-for="(item, idx) in movies"
+      v-bind:movie="item"
+      v-bind:key="idx"
+      v-bind:handler="function() {showYear(idx)}"></movie-component>
+   </div>
+
+   <script>
+
+      Vue.component('movie-component', {
+         props: ['movie', 'handler'],
+         template: `<div>
+            <h4>{{movie.title}}</h4>
+            <img :src='movie.img' width='80'>
+            <br>
+            <h1>{{movie.rating}}</h1>
+            <button v-on:click='handler'>show year</button>
+            </div>`,
+      });
+
+      var app6 = new Vue({
+         el: '#app-6',
+         data: {
+            movies: [
+               {id: 1, title: 'Terminator', year: 1984, rating: 8.1, img: 'https://upload.wikimedia.org/wikipedia/ru/c/ca/Terminator_poster.jpg'},
+               {id: 2, title: 'Terminator 2', year: 1991, rating: 8.2, img: 'https://upload.wikimedia.org/wikipedia/ru/8/85/Terminator2poster.jpg'},
+               {id: 3, title: 'Terminator 3', year: 2003, rating: 6.1, img: 'https://upload.wikimedia.org/wikipedia/ru/7/73/Terminator_3_Rise_of_the_Machines.jpg'},
+            ],
+         },
+         methods: {
+            showYear: function(i) {
+               // alert('HELLO');  
+               alert(`year: ${this.movies[i].year}`)
+            },
+         },
+      });
+   </script>
+</body>
+</html>

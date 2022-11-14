@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Vue.js basics </title>
+   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+   <h3>App1</h3>
+   <div id="app1">
+         <p>{{ message }}</p>
+         <code>{{ date_str }}</code>
+   </div>
+   <hr>
+
+   <h3>App2</h3>
+   <div id="app2">
+         <p v-if='visible'>{{ txt }}</p>
+         <button v-on:click="handler">{{caption}}</button>
+   </div>
+   <hr>
+
+   <h3>App3</h3>
+   <div id="app3">
+         <p v-for='todo in todos'>task: {{ todo }}</p>
+         <button v-on:click="handler">pop one</button>
+   </div>
+   <hr>
+
+   <script>
+      var app1 = new Vue({
+         el: '#app1',
+         data: {
+            message: 'Hello, Vue!',
+            date_str: new Date().toLocaleString(),
+         },
+      });
+
+      var app2 = new Vue({
+         el: '#app2',
+         data: {
+            txt: 'You can see me',
+            caption: 'hide',
+            visible: true,
+         },
+         methods: {
+            handler: function() {
+               this.visible = ! this.visible;
+               if (this.visible) {
+                  this.caption = 'hide';
+               } else {
+                  this.caption = 'show';
+               }
+            },
+         },
+      });
+
+      var app3 = new Vue({
+         el: '#app3',
+         data: {
+            todos: [
+               'learn JavaScript',
+               'learn Vue.js',
+               'learn React',
+            ]
+         },
+         methods: {
+            handler: function() {
+               this.todos.pop();
+            },
+         },
+      });
+
+   </script>
+</body>
+</html>
