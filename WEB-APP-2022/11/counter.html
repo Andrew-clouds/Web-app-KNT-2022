@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8" />
+   <title>Hello World</title>
+   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+   <div id="root"></div>
+   <script type="text/babel">
+
+
+
+      class Counter extends React.Component {
+
+         constructor(props) {
+            super(props);
+            this.state = {
+               counter: 0,
+            };
+         }
+
+         plusOne = () => {
+            var copyCounter = this.state.counter;
+            copyCounter++;
+            this.setState({
+               counter: copyCounter,
+            });
+         }
+
+         minusOne = () => {
+            var copyCounter = this.state.counter;
+            if(copyCounter > 0) copyCounter--;
+            this.setState({
+               counter: copyCounter,
+            });
+         }
+
+         render() {
+            const btnStyleObj = {
+               margin: 10, padding: 5, width: 40,
+            };
+            return (
+               <div style={{
+                  width: 120, padding: 20, border: '1px solid blue',
+                  textAlign: 'center', borderRadius: 10,
+               }}>
+                  <h1>{this.state.counter}</h1>
+                  <button style={btnStyleObj}
+                  onClick={() => this.minusOne()}>-1</button>
+                  <button style={btnStyleObj}
+                  onClick={() => this.plusOne()}>+1</button>
+               </div>
+            );
+         }
+      }
+
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+      root.render(<Counter />);
+
+   </script>
+</body>
+
+</html>
